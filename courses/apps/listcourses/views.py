@@ -25,7 +25,7 @@ def add(request):
             
             return redirect('/listcourses')
         else:
-            course.objects.create(name=request.POST['name'],description=request.POST['description'])
+            course.objects.create(name=request.POST['name'],description=request.POST['description'],coursenumber=request.POST['coursenumber'],semester=request.POST['semester'])
         
         return redirect('/listcourses')
 def remove(request,id):
@@ -36,3 +36,11 @@ def delete(request,id):
     c = course.objects.get(id=id)
     c.delete()
     return redirect("/listcourses")
+
+def news(request):
+
+    return render(request,'listcourses/news.html')
+
+def faculty(request):
+    
+    return render(request,'listcourses/faculty.html')
